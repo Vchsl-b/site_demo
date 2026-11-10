@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Шиномонтаж на Алтайской, 22 — демо</title>
+  <meta name="description" content="Демо сайта шиномонтажа на Алтайской, 22 в Кемерово. Услуги, запись по телефону и контакты. Данные ждут сверки с владельцем.">
+  <meta name="theme-color" content="#17191b">
+  <!-- Оформление встроено, чтобы страница работала отдельным файлом. -->
+  <style>
+:root {
+  /* ЦВЕТ КНОПКИ. Основной оранжевый и цвет при наведении. */
+  --call-orange: #ff962e;
+  --call-hover: #ffb264;
+  --ink: #f5f3ee;
+  --muted: #b4b5b4;
+  --accent: #ffa64c;
+  --line: #36383a;
+  --page: #17191b;
+  --panel: #202224;
+  --button-ink: #191512;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 1.5rem; }
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font: 1rem/1.5 Arial, Helvetica, sans-serif;
+}
+
+h1, h2, h3, p, dl, dd { margin: 0; }
+a { color: inherit; text-underline-offset: .25em; }
+a:focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
+.wrap { width: min(76rem, calc(100% - 2.5rem)); margin-inline: auto; }
+.symbols { position: absolute; width: 0; height: 0; overflow: hidden; }
+.icon {
+  width: 1.3rem;
+  height: 1.3rem;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.65;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.skip-link {
+  position: absolute;
+  z-index: 10;
+  top: -5rem;
+  left: 1rem;
+  padding: .8rem;
+  background: var(--call-orange);
+  color: var(--button-ink);
+}
+.skip-link:focus { top: 1rem; }
+.site-header { border-bottom: 1px solid var(--line); }
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0 1rem;
+  padding-top: 1rem;
+}
+.brand { display: flex; align-items: center; gap: .65rem; font-weight: 700; text-decoration: none; }
+.brand small { display: block; margin-top: .2rem; color: var(--muted); font-size: .65rem; font-weight: 400; }
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: var(--call-orange);
+  color: var(--button-ink);
+  border-radius: 50%;
+}
+.brand-mark .icon { width: 1.7rem; height: 1.7rem; }
+.navigation { display: flex; order: 3; width: 100%; gap: 1.65rem; margin-top: .6rem; }
+.navigation a { padding-block: .7rem; color: var(--muted); font-size: .85rem; text-decoration: none; }
+.navigation a:hover { color: var(--accent); }
+.header-actions { display: flex; align-items: center; gap: 1.3rem; }
+.badge { color: var(--muted); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; }
+.header-call { display: none; }
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 90% 45%, #382e23, transparent 62%), #17191b;
+}
+.hero-inner { padding-block: 2.5rem 0; }
+.hero-content { position: relative; z-index: 1; }
+.eyebrow { color: var(--accent); font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+h1 {
+  margin-block: 1.1rem 1.3rem;
+  font-size: clamp(1.75rem, 8.7vw, 3.25rem);
+  font-weight: 800;
+  line-height: 1.07;
+  letter-spacing: -.045em;
+}
+h1 span { color: var(--accent); }
+.location { display: flex; align-items: flex-start; gap: .5rem; color: #e1ded8; font-size: .94rem; }
+.location .icon { color: var(--accent); }
+.actions { display: flex; flex-direction: column; align-items: stretch; gap: .5rem; margin-top: 1.7rem; }
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 3.5rem;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  padding: .9rem 1.15rem;
+  font-size: .95rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+.primary { background: var(--call-orange); color: var(--button-ink); }
+.primary:hover { background: var(--call-hover); }
+.hero-map { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; min-height: 2.75rem; font-size: .9rem; text-decoration: none; }
+.hero-map:hover { color: var(--accent); }
+.booking-note { margin-top: 1.05rem; color: var(--muted); font-size: .8rem; }
+.hero-visual { display: none; }
+.hero-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.4rem;
+  margin-top: 2rem;
+  border-top: 1px solid var(--line);
+  padding-block: 1.5rem;
+}
+.hero-bottom p { display: flex; align-items: center; gap: .8rem; font-size: .87rem; }
+.hero-bottom p > .icon { color: var(--accent); }
+.hero-bottom small { display: block; margin-top: .2rem; color: var(--muted); font-size: .75rem; }
+.hero-bottom a { display: flex; align-items: center; gap: 1.8rem; padding-block: .4rem; font-size: .8rem; text-decoration: none; }
+.hero-bottom a span { color: var(--accent); font-size: 1.25rem; }
+.hero-bottom a:hover { color: var(--accent); }
+
+.services-section { padding-block: 2.7rem; }
+.section-heading { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 1rem; margin-bottom: 1.6rem; }
+h2 { margin-top: .65rem; font-size: clamp(1.7rem, 5vw, 2.65rem); line-height: 1.13; letter-spacing: -.03em; }
+.section-note { color: var(--muted); font-size: .87rem; }
+.service-list { display: grid; border-top: 1px solid var(--line); }
+.service {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1rem 2.2rem 1fr 1.2rem;
+  align-items: center;
+  gap: .7rem;
+  min-height: 5.8rem;
+  border-bottom: 1px solid var(--line);
+  padding-block: 1.2rem;
+  text-decoration: none;
+}
+.service-number { color: var(--muted); font-size: .65rem; }
+.service-icon { width: 2rem; height: 2rem; color: var(--accent); }
+.service h3 { font-size: 1rem; font-weight: 500; }
+.service-arrow { width: 1.1rem; height: 1.1rem; color: var(--muted); }
+.service:hover { background: var(--panel); }
+.service:hover .service-arrow { color: var(--accent); }
+
+.reviews {
+  position: relative;
+  overflow: hidden;
+  border-left: 3px solid var(--call-orange);
+  padding: 1.8rem 1.3rem;
+  background: var(--panel);
+}
+.review-copy { max-width: 36rem; margin-block: 1rem 1.4rem; color: var(--muted); font-size: .95rem; }
+.secondary { border-color: #71614e; color: var(--ink); }
+.secondary:hover { border-color: var(--accent); color: var(--accent); }
+.review-illustration { display: none; }
+.contacts { padding-block: 2.7rem; }
+.contact-phone { display: inline-flex; align-items: center; gap: .65rem; color: var(--accent); font-size: clamp(1.15rem, 4vw, 1.65rem); font-weight: 700; text-decoration: none; }
+.contact-list { display: grid; gap: 1.6rem; padding-top: 1.3rem; border-top: 1px solid var(--line); }
+.contact-list dt { display: flex; align-items: center; gap: .45rem; color: var(--muted); font-size: .8rem; }
+.contact-list .icon { width: 1.1rem; height: 1.1rem; }
+.contact-list dd { margin-top: .6rem; font-size: .95rem; }
+.contact-list small { display: block; margin-top: .25rem; color: var(--muted); font-size: .85rem; }
+.contact-list a { color: var(--accent); font-size: .85rem; }
+.site-footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; border-top: 1px solid var(--line); padding-block: 1.2rem; color: var(--muted); font-size: .72rem; }
+.site-footer a { text-decoration: none; }
+
+@media (min-width: 42rem) {
+  .wrap { width: min(76rem, calc(100% - 4rem)); }
+  .header-inner { padding-block: 1.3rem; }
+  .navigation { order: 0; width: auto; margin: 0; }
+  .hero-inner { padding-top: 3.6rem; }
+  h1 { font-size: clamp(3.2rem, 7vw, 5.1rem); }
+  .actions { flex-direction: row; align-items: center; gap: 1.7rem; }
+  .service-list { grid-template-columns: 1fr 1fr; }
+  .service { gap: 1rem; min-height: 7rem; padding-inline: 1rem; }
+  .service:nth-child(odd) { border-right: 1px solid var(--line); }
+  .service h3 { font-size: 1.15rem; }
+  .services-section, .contacts { padding-block: 4.5rem; }
+  .reviews { display: flex; align-items: center; justify-content: space-between; gap: 2rem; padding: 2.8rem; }
+  .review-illustration { display: block; width: 7rem; height: 7rem; color: #776047; stroke-width: .6; transform: rotate(-8deg); }
+  .contact-list { grid-template-columns: 1.2fr 1fr; }
+}
+
+@media (min-width: 68rem) {
+  .header-call { display: flex; align-items: center; gap: .5rem; font-size: .85rem; text-decoration: none; }
+  .header-call .icon { color: var(--accent); }
+  .hero-inner { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); align-items: center; column-gap: 2rem; padding-top: 4.5rem; }
+  h1 { font-size: clamp(3.5rem, 5.5vw, 5.1rem); }
+  .hero-visual { position: relative; display: grid; place-items: center; min-height: 26rem; }
+  .hero-visual::before { content: ""; position: absolute; inset: 0 3% 0 16%; transform: skew(-15deg); background: var(--call-orange); opacity: .88; }
+  .wheel-art { position: relative; width: 93%; transform: rotate(-12deg); filter: drop-shadow(0 22px 12px #0007); }
+  .visual-caption { position: absolute; z-index: 1; right: 5%; top: -1rem; display: flex; align-items: center; gap: .6rem; padding: .5rem .8rem; background: var(--page); color: var(--muted); font-size: .7rem; text-transform: uppercase; letter-spacing: .08em; }
+  .visual-caption b { color: var(--ink); font-size: 1.5rem; }
+  .hero-bottom { grid-column: 1 / -1; margin-top: 3.2rem; padding-block: 1.65rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+  </style>
+</head>
+<body>
+  <svg class="symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="wheel" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/>
+      <path d="M12 7v5l4 3M12 12l-4 3"/>
+    </symbol>
+    <symbol id="phone" viewBox="0 0 24 24">
+      <path d="M7 3H5a2 2 0 0 0-2 2 16 16 0 0 0 16 16 2 2 0 0 0 2-2v-2l-5-2-2 2a12 12 0 0 1-7-7l2-2z"/>
+    </symbol>
+    <symbol id="arrow" viewBox="0 0 24 24">
+      <path d="M6 18 18 6M8 6h10v10"/>
+    </symbol>
+    <symbol id="pin" viewBox="0 0 24 24">
+      <path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2"/>
+    </symbol>
+    <symbol id="clock" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+    </symbol>
+    <symbol id="review" viewBox="0 0 24 24">
+      <path d="M21 4H3v13h5l4 4v-4h9zM7 9h10m-10 4h6"/>
+    </symbol>
+    <symbol id="repair" viewBox="0 0 24 24">
+      <path d="m9 3 12 12-6 6L3 9zM7 7l2-2m8 14 2-2M10 12h4m-2-2v4"/>
+    </symbol>
+    <symbol id="stud" viewBox="0 0 24 24">
+      <path d="M8 3h8v4l-2 2v8h-4V9L8 7zm-4 18h16M8 17h8"/>
+    </symbol>
+    <symbol id="brake" viewBox="0 0 24 24">
+      <circle cx="11" cy="12" r="8"/><circle cx="11" cy="12" r="3"/>
+      <path d="M17 5h4v14h-4zM7 7l1 1m-2 5h1m2 4 1-1"/>
+    </symbol>
+  </svg>
+
+  <a class="skip-link" href="#main">Перейти к содержанию</a>
+  <header class="site-header">
+    <div class="header-inner wrap">
+      <a class="brand" href="#top" aria-label="Шиномонтаж на Алтайской — начало страницы">
+        <span class="brand-mark"><svg class="icon" aria-hidden="true"><use href="#wheel"/></svg></span>
+        <span>На Алтайской<small>Шиномонтаж · Кемерово</small></span>
+      </a>
+      <nav class="navigation" aria-label="Основная навигация">
+        <a href="#services">Услуги</a>
+        <a href="#reviews">Отзывы</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+      <div class="header-actions">
+        <span class="badge">Демо</span>
+        <a class="header-call" href="tel:+79609019626"><svg class="icon" aria-hidden="true"><use href="#phone"/></svg><span>+7 960 901-96-26</span></a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="title">
+      <div class="hero-inner wrap">
+        <div class="hero-content">
+          <p class="eyebrow">Шины / Колёса / Тормоза</p>
+          <h1 id="title">Шиномонтаж<br><span>на Алтайской</span></h1>
+          <p class="location"><svg class="icon" aria-hidden="true"><use href="#pin"/></svg> Кемерово, Алтайская улица, 22</p>
+          <div class="actions">
+            <!-- НОМЕР. Замените все tel:+79609019626 и видимые номера в этом файле. -->
+            <a class="button primary" href="tel:+79609019626" aria-describedby="booking-note">Записаться на ремонт <svg class="icon" aria-hidden="true"><use href="#phone"/></svg></a>
+            <a class="hero-map" href="https://2gis.ru/kemerovo/firm/70000001022321728">Открыть в 2ГИС <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg></a>
+          </div>
+          <p class="booking-note" id="booking-note">Позвоните, чтобы выбрать время визита.</p>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <span class="visual-caption">Алтайская <b>22</b></span>
+          <svg class="wheel-art" viewBox="0 0 400 400">
+            <defs>
+              <path id="tread" d="m183 23 16 14 18-14"/>
+              <path id="spoke" d="M185 176 166 112l16-9 28 69Z"/>
+            </defs>
+            <circle cx="200" cy="200" r="198" fill="none" stroke="#7d6450" stroke-dasharray="2 9"/>
+            <g fill="#202224" stroke="#d8c7b4">
+              <circle cx="200" cy="200" r="180" stroke-width="2"/>
+              <circle cx="200" cy="200" r="159" fill="none" stroke-width="1.5"/>
+              <circle cx="200" cy="200" r="145" fill="#121416" stroke-width="2"/>
+              <circle cx="200" cy="200" r="115" stroke-width="2"/>
+              <circle cx="200" cy="200" r="98" fill="#292b2d" stroke-width="1.5"/>
+            </g>
+            <g fill="none" stroke="#aa9681" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <use href="#tread"/><use href="#tread" transform="rotate(30 200 200)"/>
+              <use href="#tread" transform="rotate(60 200 200)"/><use href="#tread" transform="rotate(90 200 200)"/>
+              <use href="#tread" transform="rotate(120 200 200)"/><use href="#tread" transform="rotate(150 200 200)"/>
+              <use href="#tread" transform="rotate(180 200 200)"/><use href="#tread" transform="rotate(210 200 200)"/>
+              <use href="#tread" transform="rotate(240 200 200)"/><use href="#tread" transform="rotate(270 200 200)"/>
+              <use href="#tread" transform="rotate(300 200 200)"/><use href="#tread" transform="rotate(330 200 200)"/>
+            </g>
+            <g fill="#414345" stroke="#d8c7b4" stroke-width="2">
+              <use href="#spoke"/><use href="#spoke" transform="rotate(72 200 200)"/>
+              <use href="#spoke" transform="rotate(144 200 200)"/><use href="#spoke" transform="rotate(216 200 200)"/>
+              <use href="#spoke" transform="rotate(288 200 200)"/>
+              <circle cx="200" cy="200" r="30" fill="#ff962e"/>
+              <circle cx="200" cy="200" r="13" fill="#17191b"/>
+            </g>
+          </svg>
+        </div>
+        <div class="hero-bottom">
+          <!-- ГРАФИК. Повторяется в разделе «Контакты». -->
+          <p><svg class="icon" aria-hidden="true"><use href="#clock"/></svg><span>Ежедневно с 09:00 до 18:00 <small>По предварительной записи</small></span></p>
+          <a href="#services">Посмотреть услуги <span aria-hidden="true">↓</span></a>
+        </div>
+      </div>
+    </section>
+
+    <div class="details wrap">
+      <section class="services-section" id="services" aria-labelledby="services-title">
+        <div class="section-heading">
+          <div><p class="eyebrow">01 / В мастерской</p><h2 id="services-title">Услуги</h2></div>
+          <p class="section-note">Выберите работу и позвоните<br>для записи.</p>
+        </div>
+        <div class="service-list">
+          <a class="service" href="tel:+79609019626" aria-label="Записаться на шиномонтаж по телефону">
+            <span class="service-number">01</span>
+            <svg class="service-icon icon" aria-hidden="true"><use href="#wheel"/></svg>
+            <h3>Шиномонтаж</h3><svg class="icon service-arrow" aria-hidden="true"><use href="#arrow"/></svg>
+          </a>
+          <a class="service" href="tel:+79609019626" aria-label="Записаться на ремонт порезов по телефону">
+            <span class="service-number">02</span>
+            <svg class="service-icon icon" aria-hidden="true"><use href="#repair"/></svg>
+            <h3>Ремонт порезов</h3><svg class="icon service-arrow" aria-hidden="true"><use href="#arrow"/></svg>
+          </a>
+          <a class="service" href="tel:+79609019626" aria-label="Записаться на ошиповку шин по телефону">
+            <span class="service-number">03</span>
+            <svg class="service-icon icon" aria-hidden="true"><use href="#stud"/></svg>
+            <h3>Ошиповка шин</h3><svg class="icon service-arrow" aria-hidden="true"><use href="#arrow"/></svg>
+          </a>
+          <a class="service" href="tel:+79609019626" aria-label="Записаться на замену колодок по телефону">
+            <span class="service-number">04</span>
+            <svg class="service-icon icon" aria-hidden="true"><use href="#brake"/></svg>
+            <h3>Замена колодок</h3><svg class="icon service-arrow" aria-hidden="true"><use href="#arrow"/></svg>
+          </a>
+        </div>
+      </section>
+
+      <section class="reviews" id="reviews" aria-labelledby="reviews-title">
+        <div>
+          <p class="eyebrow">02 / Мнение клиентов</p>
+          <h2 id="reviews-title">Отзывы о мастерской</h2>
+          <p class="review-copy">Загляните во вкладку «Отзывы» в нашей карточке 2ГИС.</p>
+          <a class="button secondary" href="https://2gis.ru/kemerovo/firm/70000001022321728">Перейти в 2ГИС <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg></a>
+        </div>
+        <svg class="review-illustration icon" aria-hidden="true"><use href="#review"/></svg>
+      </section>
+
+      <section class="contacts" id="contacts" aria-labelledby="contacts-title">
+        <div class="section-heading">
+          <div><p class="eyebrow">03 / Ждём вас</p><h2 id="contacts-title">Контакты</h2></div>
+          <a class="contact-phone" href="tel:+79609019626">+7 960 901-96-26 <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg></a>
+        </div>
+        <dl class="contact-list">
+          <div>
+            <dt><svg class="icon" aria-hidden="true"><use href="#pin"/></svg> Адрес</dt>
+            <dd>Кемерово, Алтайская улица, 22<small>Заводский район</small></dd>
+            <dd><a href="https://2gis.ru/kemerovo/firm/70000001022321728">Открыть в 2ГИС</a></dd>
+          </div>
+          <div>
+            <dt><svg class="icon" aria-hidden="true"><use href="#clock"/></svg> График работы</dt>
+            <dd>Ежедневно с 09:00 до 18:00<br>По предварительной записи</dd>
+          </div>
+        </dl>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer wrap">
+    <p>Демо · Данные из 2ГИС ждут сверки с владельцем.</p>
+    <a href="#top">Наверх ↑</a>
+  </footer>
+</body>
+</html>
